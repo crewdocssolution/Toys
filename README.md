@@ -4,22 +4,36 @@
 
 ## Сайт
 
-Файл `index.html` — вітрина з 5 образами, описом функцій, комплектом і формою замовлення.
-Фото підключені через `img-data/*.js` (без водяних знаків, обрізані під картки).
+- `index.html` — вітрина з 5 образами, функціями, комплектом і формою замовлення
+- `IMG_3772.jpeg` … `IMG_3776.jpeg` — каталожні фото
 
-GitHub Pages:
+Образи:
 
-1. Settings → Pages
+| Файл | Образ |
+|---|---|
+| IMG_3772.jpeg | Зайчик |
+| IMG_3773.jpeg | Блакитний жилет |
+| IMG_3774.jpeg | Єдиноріг фіолетовий |
+| IMG_3775.jpeg | Рожева шубка |
+| IMG_3776.jpeg | Єдиноріг блакитний |
+
+## GitHub Pages
+
+Адреса після увімкнення:
+
+https://crewdocssolution.github.io/Toys/
+
+Як увімкнути (один раз):
+
+1. Відкрийте https://github.com/crewdocssolution/Toys/settings/pages
 2. Source: **Deploy from a branch**
-3. Branch: `main`, folder: `/ (root)`
-4. Адреса: https://crewdocssolution.github.io/Toys/
+3. Branch: `main` / folder: `/ (root)`
+4. Save
 
-## Перед продажем
+## Перед рекламою
 
-- ціну `1 190 ₴`
-- телефон / Telegram у формі
-- куди надсилати заявки (зараз форма копіює текст заявки)
+- перевірте ціну `1 190 ₴`
+- додайте свій телефон / Telegram
+- форма зараз копіює текст заявки в буфер
 
-## Репозиторій
-
-https://github.com/crewdocssolution/Toys
+Репозиторій: https://github.com/crewdocssolution/Toys

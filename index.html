@@ -87,11 +87,11 @@
     .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
     .hero-art {
       position: relative; background: #fff; border-radius: 36px;
-      padding: 16px; box-shadow: var(--shadow);
+      padding: 16px; box-shadow: var(--shadow); overflow: hidden;
     }
     .hero-art img {
-      width: 100%; border-radius: 26px; min-height: 320px; max-height: 520px;
-      object-fit: contain; background: #fff7fb;
+      width: 100%; border-radius: 26px; height: min(62vw, 520px);
+      object-fit: cover; object-position: 78% 18%; background: #fff7fb;
     }
     .badge {
       position: absolute; right: 22px; top: 22px;
@@ -111,8 +111,8 @@
     }
     .card.active, .card:hover { border-color: #ff8ab4; }
     .card img {
-      height: 260px; width: 100%; object-fit: contain;
-      background: #fff7fb; padding: 8px 8px 0;
+      height: 250px; width: 100%; object-fit: cover;
+      object-position: 80% 16%; background: #fff7fb;
     }
     .card .body { padding: 14px 14px 16px; }
     .card h3 { font-size: 16px; margin-bottom: 4px; }
@@ -128,6 +128,10 @@
     .kit li {
       list-style: none; background: #fff; border-radius: 16px; padding: 12px 14px;
       font-weight: 700; box-shadow: var(--shadow);
+    }
+    .kit-photo img {
+      width: 100%; border-radius: 26px; height: min(70vw, 480px);
+      object-fit: cover; object-position: 18% 78%; background: #fff7fb;
     }
     .order {
       background: linear-gradient(180deg, #fff, #ffe9f3);
@@ -146,6 +150,7 @@
       position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
       background: #2c1d2b; color: #fff; padding: 12px 18px; border-radius: 999px;
       display: none; z-index: 80; font-weight: 700;
+      max-width: calc(100% - 24px); text-align: center;
     }
     @media (max-width: 980px) {
       .hero, .split, .features { grid-template-columns: 1fr; }
@@ -154,7 +159,7 @@
     }
     @media (max-width: 560px) {
       .grid { grid-template-columns: 1fr; }
-      .card img { height: 320px; }
+      .card img { height: 340px; }
     }
   </style>
 </head>
@@ -191,7 +196,7 @@
       </div>
       <div class="hero-art">
         <div class="badge">8<br>функцій</div>
-        <img id="heroImg" alt="Пупс Диво Маля" src="img/bunny-card.jpg" />
+        <img id="heroImg" alt="Пупс Диво Маля" src="IMG_3772.jpeg" />
       </div>
     </section>
 
@@ -232,8 +237,8 @@
           <li>Два браслетики</li>
         </ul>
       </div>
-      <div class="hero-art">
-        <img id="kitImg" alt="Комплект аксесуарів" src="img/pink-coat.jpg" />
+      <div class="hero-art kit-photo">
+        <img id="kitImg" alt="Комплект аксесуарів" src="IMG_3772.jpeg" />
       </div>
     </section>
 
@@ -276,23 +281,13 @@
   </footer>
   <div class="toast" id="toast">Дякуємо! Заявку скопійовано — надішліть її в Telegram або SMS.</div>
 
-  <script src="img-data/bunny.js"></script>
-  <script src="img-data/blue-vest.js"></script>
-  <script src="img-data/purple-unicorn.js"></script>
-  <script src="img-data/pink-coat.js"></script>
-  <script src="img-data/blue-unicorn.js"></script>
   <script>
-    const src = (key, fallback) => {
-      const raw = window.TOY_IMGS && window.TOY_IMGS[key];
-      return raw ? ("data:image/jpeg;base64," + raw) : fallback;
-    };
-
     const models = [
-      { id: "bunny", name: "Зайчик", desc: "Білий махровий комбінезон", key: "bunny", card: "bunny-card", file: "img/bunny.jpg", cardFile: "img/bunny-card.jpg" },
-      { id: "blue-vest", name: "Блакитний жилет", desc: "Жилет із помпонами", key: "blue-vest", card: "blue-vest-card", file: "img/blue-vest.jpg", cardFile: "img/blue-vest-card.jpg" },
-      { id: "purple", name: "Єдиноріг фіолетовий", desc: "Кігурумі з золотим рогом", key: "purple-unicorn", card: "purple-unicorn-card", file: "img/purple-unicorn.jpg", cardFile: "img/purple-unicorn-card.jpg" },
-      { id: "pink", name: "Рожева шубка", desc: "Пухнастий образ принцеси", key: "pink-coat", card: "pink-coat-card", file: "img/pink-coat.jpg", cardFile: "img/pink-coat-card.jpg" },
-      { id: "blue-uni", name: "Єдиноріг блакитний", desc: "Піжама з єдинорогом", key: "blue-unicorn", card: "blue-unicorn-card", file: "img/blue-unicorn.jpg", cardFile: "img/blue-unicorn-card.jpg" }
+      { id: "bunny", name: "Зайчик", desc: "Білий махровий комбінезон", file: "IMG_3772.jpeg" },
+      { id: "blue-vest", name: "Блакитний жилет", desc: "Жилет із помпонами", file: "IMG_3773.jpeg" },
+      { id: "purple", name: "Єдиноріг фіолетовий", desc: "Кігурумі з золотим рогом", file: "IMG_3774.jpeg" },
+      { id: "pink", name: "Рожева шубка", desc: "Пухнастий образ принцеси", file: "IMG_3775.jpeg" },
+      { id: "blue-uni", name: "Єдиноріг блакитний", desc: "Піжама з єдинорогом", file: "IMG_3776.jpeg" }
     ];
 
     const cards = document.getElementById("cards");
@@ -300,22 +295,17 @@
     const heroImg = document.getElementById("heroImg");
     const kitImg = document.getElementById("kitImg");
 
-    heroImg.src = src("bunny-card", models[0].cardFile);
-    kitImg.src = src("pink-coat", "img/pink-coat.jpg");
-
     models.forEach((m, i) => {
-      const photo = src(m.card, m.cardFile);
-      const full = src(m.key, m.file);
       const el = document.createElement("button");
       el.className = "card" + (i === 0 ? " active" : "");
       el.type = "button";
-      el.innerHTML = `<img src="${photo}" alt="${m.name}"><div class="body"><h3>${m.name}</h3><p>${m.desc}</p><div class="price">1 190 ₴</div></div>`;
+      el.innerHTML = `<img src="${m.file}" alt="${m.name}"><div class="body"><h3>${m.name}</h3><p>${m.desc}</p><div class="price">1 190 ₴</div></div>`;
       el.onclick = () => {
         document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
         el.classList.add("active");
         select.value = m.id;
-        heroImg.src = photo;
-        kitImg.src = full;
+        heroImg.src = m.file;
+        kitImg.src = m.file;
       };
       cards.appendChild(el);
       const opt = document.createElement("option");
