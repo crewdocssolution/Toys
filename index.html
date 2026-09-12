@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Диво Маля — інтерактивний пупс 45 см</title>
+  <meta name="description" content="Інтерактивний пупс Диво Маля 45 см: 8 функцій, 9 аксесуарів. П’є з пляшечки, ходить на горщик, плаче, закриває очі. Доставка по Україні." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --pink: #ff6fa3;
+      --pink-d: #e84e8a;
+      --cream: #fff6fb;
+      --ink: #3b2a3a;
+      --muted: #7a6676;
+      --shadow: 0 18px 50px rgba(232, 78, 138, 0.14);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Nunito, system-ui, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #ffe1f0 0%, transparent 50%),
+        radial-gradient(900px 500px at 110% 10%, #e4f7ff 0%, transparent 46%),
+        var(--cream);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(255,246,251,.82);
+      border-bottom: 1px solid rgba(255,111,163,.18);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      min-height: 72px; gap: 16px;
+    }
+    .logo {
+      font-family: Pacifico, cursive;
+      font-size: 28px;
+      background: linear-gradient(90deg, #ff6fa3, #8ec5ff 55%, #c9a0ff);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      line-height: 1;
+    }
+    .logo small {
+      display: block; font-family: Nunito, sans-serif; font-size: 11px;
+      letter-spacing: .18em; color: var(--muted); text-transform: uppercase;
+      background: none; -webkit-text-fill-color: var(--muted);
+    }
+    .nav-links { display: flex; gap: 22px; font-weight: 700; color: var(--muted); }
+    .nav-links a:hover { color: var(--pink-d); }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: linear-gradient(180deg, #ff8ab4, #ff5e9a);
+      color: #fff; font-weight: 800; font-family: inherit;
+      padding: 13px 22px; border-radius: 999px; border: 0; cursor: pointer;
+      box-shadow: 0 10px 24px rgba(255, 94, 154, .35);
+    }
+    .btn.ghost {
+      background: #fff; color: var(--pink-d);
+      box-shadow: 0 0 0 2px rgba(255,111,163,.25);
+    }
+    .hero {
+      display: grid; grid-template-columns: 1.05fr .95fr; gap: 36px;
+      align-items: center; padding: 46px 0 20px;
+    }
+    .eyebrow {
+      display: inline-flex; gap: 8px; align-items: center;
+      background: #fff; border-radius: 999px; padding: 6px 12px 6px 6px;
+      font-weight: 800; font-size: 13px; color: var(--pink-d);
+      box-shadow: var(--shadow);
+    }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: #7fe0d3; }
+    h1 { font-size: clamp(34px, 5vw, 58px); line-height: 1.05; margin: 16px 0 14px; letter-spacing: -.03em; }
+    h1 span { color: var(--pink-d); }
+    .lead { font-size: 18px; color: var(--muted); max-width: 52ch; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 22px 0 26px; }
+    .pill {
+      background: #fff; border-radius: 999px; padding: 8px 14px;
+      font-weight: 800; font-size: 14px; box-shadow: var(--shadow);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-art {
+      position: relative; background: #fff; border-radius: 36px;
+      padding: 16px; box-shadow: var(--shadow);
+    }
+    .hero-art img { width: 100%; border-radius: 26px; min-height: 280px; object-fit: contain; background: #fff7fb; }
+    .badge {
+      position: absolute; right: 22px; top: 22px;
+      background: linear-gradient(180deg, #ff8ab4, #ff5e9a);
+      color: #fff; font-weight: 900; border-radius: 22px;
+      padding: 10px 14px; text-align: center; line-height: 1.15;
+      box-shadow: 0 10px 20px rgba(255,94,154,.3);
+    }
+    .section { padding: 64px 0; }
+    .section h2 { font-size: clamp(28px, 4vw, 40px); letter-spacing: -.03em; margin-bottom: 8px; }
+    .sub { color: var(--muted); margin-bottom: 28px; max-width: 60ch; }
+    .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .card {
+      background: #fff; border-radius: 24px; overflow: hidden;
+      box-shadow: var(--shadow); cursor: pointer; text-align: left;
+      border: 2px solid transparent; font: inherit; color: inherit;
+    }
+    .card.active, .card:hover { border-color: #ff8ab4; }
+    .card img { height: 230px; width: 100%; object-fit: cover; background: #fff7fb; }
+    .card .body { padding: 14px 14px 16px; }
+    .card h3 { font-size: 16px; margin-bottom: 4px; }
+    .card p { color: var(--muted); font-size: 13px; font-weight: 700; }
+    .price { color: var(--pink-d); font-weight: 900; font-size: 18px; margin-top: 8px; }
+    .features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .feat { background: #fff; border-radius: 22px; padding: 18px; box-shadow: var(--shadow); }
+    .feat .ico { font-size: 28px; margin-bottom: 8px; }
+    .feat h3 { font-size: 16px; margin-bottom: 6px; }
+    .feat p { color: var(--muted); font-size: 14px; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: center; }
+    .kit { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .kit li {
+      list-style: none; background: #fff; border-radius: 16px; padding: 12px 14px;
+      font-weight: 700; box-shadow: var(--shadow);
+    }
+    .order {
+      background: linear-gradient(180deg, #fff, #ffe9f3);
+      border-radius: 32px; padding: 28px; box-shadow: var(--shadow);
+    }
+    form { display: grid; gap: 12px; }
+    label { font-weight: 800; font-size: 13px; }
+    input, select, textarea {
+      width: 100%; border: 1.5px solid #f3cbe0; border-radius: 14px;
+      padding: 12px 14px; font: inherit; background: #fff;
+    }
+    textarea { min-height: 90px; resize: vertical; }
+    .note { color: var(--muted); font-size: 13px; }
+    footer { padding: 28px 0 40px; color: var(--muted); font-weight: 700; }
+    .toast {
+      position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+      background: #2c1d2b; color: #fff; padding: 12px 18px; border-radius: 999px;
+      display: none; z-index: 80; font-weight: 700;
+    }
+    @media (max-width: 980px) {
+      .hero, .split, .features { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .grid { grid-template-columns: 1fr; }
+      .card img { height: 280px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="logo">Диво Маля<small>інтерактивні пупси</small></div>
+      <nav class="nav-links">
+        <a href="#catalog">Моделі</a>
+        <a href="#features">Функції</a>
+        <a href="#kit">Комплект</a>
+        <a href="#order">Замовити</a>
+      </nav>
+      <a class="btn" href="#order">Купити зараз</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> 8 функцій · 9 аксесуарів · від 3 років</div>
+        <h1>Інтерактивний пупс, який <span>закохує з першого погляду</span></h1>
+        <p class="lead">Реалістичні риси обличчя, виразні блакитні очі, ніжний рум’янець і широка посмішка. Пупс п’є з пляшечки, ходить на горщик, плаче та закриває очі — як справжнє малятко.</p>
+        <div class="pills">
+          <span class="pill">45 см</span>
+          <span class="pill">Знімний одяг</span>
+          <span class="pill">Гума + пластик</span>
+          <span class="pill">5 образів</span>
+        </div>
+        <div class="hero-actions">
+          <a class="btn" href="#order">Замовити пупса</a>
+          <a class="btn ghost" href="#catalog">Обрати образ</a>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="badge">8<br>функцій</div>
+        <img id="heroImg" alt="Пупс Диво Маля" src="img/bunny.jpg" />
+      </div>
+    </section>
+
+    <section class="section" id="catalog">
+      <h2>Оберіть улюблений образ</h2>
+      <p class="sub">Один пупс — п’ять чарівних комплектів. Натисніть на картку, щоб поставити її в замовлення.</p>
+      <div class="grid" id="cards"></div>
+    </section>
+
+    <section class="section" id="features">
+      <h2>Що вміє Диво Маля</h2>
+      <p class="sub">Спочатку напоїть пупса з пляшечки — і всі функції оживають.</p>
+      <div class="features">
+        <article class="feat"><div class="ico">👀</div><h3>Закриває очі</h3><p>Реалістичний сон: очі заплющуються, коли малятко «засинає».</p></article>
+        <article class="feat"><div class="ico">🍼</div><h3>П’є з пляшечки</h3><p>Можна погодувати — як справжню дитину. Це запускає інші функції.</p></article>
+        <article class="feat"><div class="ico">🚽</div><h3>Ходить на горщик</h3><p>Після пляшечки натисніть на пупок — пупс іде на горщик.</p></article>
+        <article class="feat"><div class="ico">😢</div><h3>Плаче</h3><p>Стисніть ручку — і почуєте плач. Гра стає живою й емоційною.</p></article>
+        <article class="feat"><div class="ico">👗</div><h3>Знімний одяг</h3><p>Можна перевдягати, міняти образи й доглядати як за справжнім малюком.</p></article>
+        <article class="feat"><div class="ico">🧸</div><h3>Анатомія</h3><p>Правильні пропорції тіла, деталізоване обличчя, ніжний рум’янець.</p></article>
+        <article class="feat"><div class="ico">✋</div><h3>Матеріали</h3><p>Голова та кінцівки — щільна гума, тулуб — пластик. Приємно тримати.</p></article>
+        <article class="feat"><div class="ico">🎁</div><h3>9 аксесуарів</h3><p>Горщик, пляшечка, соска, свідоцтво, сюрприз та прикраси вже в коробці.</p></article>
+      </div>
+    </section>
+
+    <section class="section split" id="kit">
+      <div>
+        <h2>Усе для гри «доньки-матері»</h2>
+        <p class="sub">Комплект продуманий так, щоб дівчинка могла доглядати за пупсом увесь день.</p>
+        <ul class="kit">
+          <li>Пупс 45 см у знімному одязі</li>
+          <li>Горщик</li>
+          <li>Пляшечка</li>
+          <li>Мисочка та ложечка</li>
+          <li>Соска</li>
+          <li>Підгузок / пелюшка</li>
+          <li>Свідоцтво про народження</li>
+          <li>Сюрприз у коробочці</li>
+          <li>Два браслетики</li>
+        </ul>
+      </div>
+      <div class="hero-art">
+        <img id="kitImg" alt="Комплект аксесуарів" src="img/pink-coat.jpg" />
+      </div>
+    </section>
+
+    <section class="section" id="order">
+      <div class="split">
+        <div>
+          <h2>Замовити Диво Маля</h2>
+          <p class="sub">Напишіть ім’я та телефон — ми підтвердимо замовлення й узгодимо доставку по Україні. Оплата при отриманні або за домовленістю.</p>
+          <p class="price" style="font-size:32px;margin-bottom:8px">1 190 ₴</p>
+          <p class="note">Ціну, телефон і спосіб зв’язку можна змінити перед запуском реклами.</p>
+        </div>
+        <div class="order">
+          <form id="orderForm">
+            <div>
+              <label for="name">Ваше ім’я</label>
+              <input id="name" name="name" required placeholder="Олена" />
+            </div>
+            <div>
+              <label for="phone">Телефон</label>
+              <input id="phone" name="phone" required placeholder="+380" />
+            </div>
+            <div>
+              <label for="model">Образ пупса</label>
+              <select id="model" name="model"></select>
+            </div>
+            <div>
+              <label for="msg">Коментар</label>
+              <textarea id="msg" name="msg" placeholder="Місто, відділення Нової пошти..."></textarea>
+            </div>
+            <button class="btn" type="submit">Надіслати замовлення</button>
+            <p class="note">Натискаючи кнопку, ви погоджуєтесь, щоб з вами зв’язались щодо замовлення.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© Диво Маля · інтерактивні пупси для дівчаток · доставка по Україні</div>
+  </footer>
+  <div class="toast" id="toast">Дякуємо! Заявку скопійовано — надішліть її в Telegram або SMS.</div>
+
+  <script src="img-data/bunny.js"></script>
+  <script src="img-data/blue-vest.js"></script>
+  <script src="img-data/purple-unicorn.js"></script>
+  <script src="img-data/pink-coat.js"></script>
+  <script src="img-data/blue-unicorn.js"></script>
+  <script>
+    const src = (key, fallback) => {
+      const raw = window.TOY_IMGS && window.TOY_IMGS[key];
+      return raw ? ("data:image/jpeg;base64," + raw) : fallback;
+    };
+
+    const models = [
+      { id: "bunny", name: "Зайчик", desc: "Білий махровий комбінезон", key: "bunny", file: "img/bunny.jpg" },
+      { id: "blue-vest", name: "Блакитний жилет", desc: "Жилет із помпонами", key: "blue-vest", file: "img/blue-vest.jpg" },
+      { id: "purple", name: "Єдиноріг фіолетовий", desc: "Кігурумі з золотим рогом", key: "purple-unicorn", file: "img/purple-unicorn.jpg" },
+      { id: "pink", name: "Рожева шубка", desc: "Пухнастий образ принцеси", key: "pink-coat", file: "img/pink-coat.jpg" },
+      { id: "blue-uni", name: "Єдиноріг блакитний", desc: "Піжама з єдинорогом", key: "blue-unicorn", file: "img/blue-unicorn.jpg" }
+    ];
+
+    const cards = document.getElementById("cards");
+    const select = document.getElementById("model");
+    const heroImg = document.getElementById("heroImg");
+    const kitImg = document.getElementById("kitImg");
+
+    heroImg.src = src("bunny", models[0].file);
+    kitImg.src = src("pink-coat", "img/pink-coat.jpg");
+
+    models.forEach((m, i) => {
+      const photo = src(m.key, m.file);
+      const el = document.createElement("button");
+      el.className = "card" + (i === 0 ? " active" : "");
+      el.type = "button";
+      el.innerHTML = `<img src="${photo}" alt="${m.name}"><div class="body"><h3>${m.name}</h3><p>${m.desc}</p><div class="price">1 190 ₴</div></div>`;
+      el.onclick = () => {
+        document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
+        el.classList.add("active");
+        select.value = m.id;
+        heroImg.src = photo;
+      };
+      cards.appendChild(el);
+      const opt = document.createElement("option");
+      opt.value = m.id;
+      opt.textContent = m.name;
+      select.appendChild(opt);
+    });
+
+    document.getElementById("orderForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      const model = models.find(m => m.id === data.model)?.name || data.model;
+      const text = `Замовлення Диво Маля\nІмʼя: ${data.name}\nТелефон: ${data.phone}\nОбраз: ${model}\nКоментар: ${data.msg || "—"}`;
+      if (navigator.clipboard) navigator.clipboard.writeText(text);
+      const toast = document.getElementById("toast");
+      toast.style.display = "block";
+      setTimeout(() => toast.style.display = "none", 3600);
+    });
+  </script>
+</body>
+</html>
