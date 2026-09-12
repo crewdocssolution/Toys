@@ -4,16 +4,17 @@
 
 ## Сайт
 
-Файл `index.html` — готова вітрина з 5 образами, описом функцій, комплектом і формою замовлення.
+Файл `index.html` — вітрина з 5 образами, описом функцій, комплектом і формою замовлення.
+Фото підключені через `img-data/*.js` (без водяних знаків, обрізані під картки).
 
-Щоб відкрити в браузері з GitHub Pages:
+GitHub Pages:
 
 1. Settings → Pages
 2. Source: **Deploy from a branch**
 3. Branch: `main`, folder: `/ (root)`
-4. Сайт буде за адресою: https://crewdocssolution.github.io/Toys/
+4. Адреса: https://crewdocssolution.github.io/Toys/
 
-## Що змінити перед продажем
+## Перед продажем
 
 - ціну `1 190 ₴`
 - телефон / Telegram у формі

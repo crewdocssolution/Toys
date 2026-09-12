@@ -89,7 +89,10 @@
       position: relative; background: #fff; border-radius: 36px;
       padding: 16px; box-shadow: var(--shadow);
     }
-    .hero-art img { width: 100%; border-radius: 26px; min-height: 280px; object-fit: contain; background: #fff7fb; }
+    .hero-art img {
+      width: 100%; border-radius: 26px; min-height: 320px; max-height: 520px;
+      object-fit: contain; background: #fff7fb;
+    }
     .badge {
       position: absolute; right: 22px; top: 22px;
       background: linear-gradient(180deg, #ff8ab4, #ff5e9a);
@@ -107,7 +110,10 @@
       border: 2px solid transparent; font: inherit; color: inherit;
     }
     .card.active, .card:hover { border-color: #ff8ab4; }
-    .card img { height: 230px; width: 100%; object-fit: cover; background: #fff7fb; }
+    .card img {
+      height: 260px; width: 100%; object-fit: contain;
+      background: #fff7fb; padding: 8px 8px 0;
+    }
     .card .body { padding: 14px 14px 16px; }
     .card h3 { font-size: 16px; margin-bottom: 4px; }
     .card p { color: var(--muted); font-size: 13px; font-weight: 700; }
@@ -148,7 +154,7 @@
     }
     @media (max-width: 560px) {
       .grid { grid-template-columns: 1fr; }
-      .card img { height: 280px; }
+      .card img { height: 320px; }
     }
   </style>
 </head>
@@ -185,7 +191,7 @@
       </div>
       <div class="hero-art">
         <div class="badge">8<br>функцій</div>
-        <img id="heroImg" alt="Пупс Диво Маля" src="img/bunny.jpg" />
+        <img id="heroImg" alt="Пупс Диво Маля" src="img/bunny-card.jpg" />
       </div>
     </section>
 
@@ -282,11 +288,11 @@
     };
 
     const models = [
-      { id: "bunny", name: "Зайчик", desc: "Білий махровий комбінезон", key: "bunny", file: "img/bunny.jpg" },
-      { id: "blue-vest", name: "Блакитний жилет", desc: "Жилет із помпонами", key: "blue-vest", file: "img/blue-vest.jpg" },
-      { id: "purple", name: "Єдиноріг фіолетовий", desc: "Кігурумі з золотим рогом", key: "purple-unicorn", file: "img/purple-unicorn.jpg" },
-      { id: "pink", name: "Рожева шубка", desc: "Пухнастий образ принцеси", key: "pink-coat", file: "img/pink-coat.jpg" },
-      { id: "blue-uni", name: "Єдиноріг блакитний", desc: "Піжама з єдинорогом", key: "blue-unicorn", file: "img/blue-unicorn.jpg" }
+      { id: "bunny", name: "Зайчик", desc: "Білий махровий комбінезон", key: "bunny", card: "bunny-card", file: "img/bunny.jpg", cardFile: "img/bunny-card.jpg" },
+      { id: "blue-vest", name: "Блакитний жилет", desc: "Жилет із помпонами", key: "blue-vest", card: "blue-vest-card", file: "img/blue-vest.jpg", cardFile: "img/blue-vest-card.jpg" },
+      { id: "purple", name: "Єдиноріг фіолетовий", desc: "Кігурумі з золотим рогом", key: "purple-unicorn", card: "purple-unicorn-card", file: "img/purple-unicorn.jpg", cardFile: "img/purple-unicorn-card.jpg" },
+      { id: "pink", name: "Рожева шубка", desc: "Пухнастий образ принцеси", key: "pink-coat", card: "pink-coat-card", file: "img/pink-coat.jpg", cardFile: "img/pink-coat-card.jpg" },
+      { id: "blue-uni", name: "Єдиноріг блакитний", desc: "Піжама з єдинорогом", key: "blue-unicorn", card: "blue-unicorn-card", file: "img/blue-unicorn.jpg", cardFile: "img/blue-unicorn-card.jpg" }
     ];
 
     const cards = document.getElementById("cards");
@@ -294,11 +300,12 @@
     const heroImg = document.getElementById("heroImg");
     const kitImg = document.getElementById("kitImg");
 
-    heroImg.src = src("bunny", models[0].file);
+    heroImg.src = src("bunny-card", models[0].cardFile);
     kitImg.src = src("pink-coat", "img/pink-coat.jpg");
 
     models.forEach((m, i) => {
-      const photo = src(m.key, m.file);
+      const photo = src(m.card, m.cardFile);
+      const full = src(m.key, m.file);
       const el = document.createElement("button");
       el.className = "card" + (i === 0 ? " active" : "");
       el.type = "button";
@@ -308,6 +315,7 @@
         el.classList.add("active");
         select.value = m.id;
         heroImg.src = photo;
+        kitImg.src = full;
       };
       cards.appendChild(el);
       const opt = document.createElement("option");

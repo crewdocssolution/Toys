@@ -1,2 +1,2 @@
-Product photos are loaded from JS files in this folder.
-Open index.html after all *.js files are present.
+Cleaned product photos as base64 JS modules.
+Loaded by index.html. Keys: model name and model-card.
