@@ -247,7 +247,7 @@
         <div>
           <h2>Замовити Диво Маля</h2>
           <p class="sub">Напишіть ім’я та телефон — ми підтвердимо замовлення й узгодимо доставку по Україні. Оплата при отриманні або за домовленістю.</p>
-          <p class="price" style="font-size:32px;margin-bottom:8px">1 190 ₴</p>
+          <p class="price" style="font-size:32px;margin-bottom:8px">1 490 ₴</p>
           <p class="note">Ціну, телефон і спосіб зв’язку можна змінити перед запуском реклами.</p>
         </div>
         <div class="order">
@@ -299,7 +299,7 @@
       const el = document.createElement("button");
       el.className = "card" + (i === 0 ? " active" : "");
       el.type = "button";
-      el.innerHTML = `<img src="${m.file}" alt="${m.name}"><div class="body"><h3>${m.name}</h3><p>${m.desc}</p><div class="price">1 190 ₴</div></div>`;
+      el.innerHTML = `<img src="${m.file}" alt="${m.name}"><div class="body"><h3>${m.name}</h3><p>${m.desc}</p><div class="price">1 490 ₴</div></div>`;
       el.onclick = () => {
         document.querySelectorAll(".card").forEach(c => c.classList.remove("active"));
         el.classList.add("active");
